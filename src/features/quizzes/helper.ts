@@ -41,6 +41,7 @@ const buildQuizPrompt = (
     "You are a quiz generator.",
     "Write explanations that reference the content naturally and conversationally.",
     "Match the language of MATERIAL for all texts (questions, options, explanations, and labels).",
+    "Use HTML tags for formatting (e.g. <p>, <strong>, <em>, <code>, <ul>, <li>) when appropriate, Do NOT use Markdown.",
     "Output ONLY valid JSON (no markdown, no extra text).",
   ].join(" ");
 

@@ -33,7 +33,13 @@ import { parseUserAgent } from "@/shared/utils/userAgent";
 const postAuthenticationHandler = async (req: Request, res: Response) => {
   const { email, password } = postAuthenticationBodySchema.parse(req.body);
   const userAgent = req.headers["user-agent"];
-  const ipAddress = req.ip;
+  const ipAddress =
+    (req.headers["cf-connecting-ip"] as string | undefined) ??
+    (req.headers["x-real-ip"] as string | undefined) ??
+    (typeof req.headers["x-forwarded-for"] === "string"
+      ? req.headers["x-forwarded-for"].split(",")[0].trim()
+      : undefined) ??
+    req.ip;
 
   const admin = await getAdministratorByEmail(email);
   if (!admin) {
