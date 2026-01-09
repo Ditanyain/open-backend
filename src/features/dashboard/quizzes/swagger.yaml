@@ -1,0 +1,78 @@
+paths:
+  /api/dashboard/quizzes/questions:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Quizzes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: "35793"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/questions/{question_id}:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Question By Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: question_id
+          in: path
+          schema:
+            type: string
+          example: "question-He002sHLzzLEOmwl"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/questions/{question_Id}:
+    delete:
+      tags:
+        - Dashboard > Quizzes
+      summary: Delete Question
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: question_Id
+          in: path
+          schema:
+            type: string
+          example: "question-He002sHLzzLEOmwl"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/generations:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Quiz Generations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: "1"
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: "15"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

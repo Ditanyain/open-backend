@@ -1,0 +1,72 @@
+paths:
+  /api/authentications/sessions:
+    get:
+      tags:
+        - Dashboard > Authentications > Sessions
+      summary: Get All Sessions
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/authentications:
+    post:
+      tags:
+        - Dashboard > Authentications
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: administrator@email.com
+                password: SuperSecretP@ssw0rd
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Dashboard > Authentications
+      summary: Update Access Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                refreshToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbmlzdHJhdG9ySWQiOiJhZG1pbmlzdHJhdG9yLXNMbmVVSjBkMzAwMUNscFYiLCJyb2xlIjoiU1VQRVJVU0VSIiwiaWF0IjoxNzY1NTM0ODYxLCJleHAiOjE3NjYxMzk2NjF9.1WuqYY3h0J13yItBU6q1SiRKAdpydbqlZr0XsRSWlnI"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Dashboard > Authentications
+      summary: Logout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                refreshToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbmlzdHJhdG9ySWQiOiJhZG1pbmlzdHJhdG9yLXNMbmVVSjBkMzAwMUNscFYiLCJyb2xlIjoiU1VQRVJVU0VSIiwiaWF0IjoxNzY1NTM0ODYxLCJleHAiOjE3NjYxMzk2NjF9.1WuqYY3h0J13yItBU6q1SiRKAdpydbqlZr0XsRSWlnI"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Dashboard > Authentications
+      summary: Get Session
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

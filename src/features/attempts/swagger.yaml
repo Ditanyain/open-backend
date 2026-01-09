@@ -1,0 +1,81 @@
+paths:
+  /api/attempts:
+    get:
+      tags:
+        - Attempts
+      summary: Get Attempt By User and Tutorial
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: "2"
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: "35363"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts/{attempt_id}:
+    get:
+      tags:
+        - Attempts
+      summary: Get Attempt By ID
+      parameters:
+        - name: attempt_id
+          in: path
+          schema:
+            type: string
+          example: "attempt-lHzjYSk0O-ek5qzo"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts/{attempt_id}/answers:
+    post:
+      tags:
+        - Attempts
+      summary: Post Attempt Answer
+      parameters:
+        - name: attempt_id
+          in: path
+          schema:
+            type: string
+          example: "attempt-lHzjYSk0O-ek5qzo"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                question_id: question-uVCZLH
+                option_ids:
+                  - option-qFka6r
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts/{attempt_id}/submit:
+    post:
+      tags:
+        - Attempts
+      summary: Submit Attempt
+      parameters:
+        - name: attempt_id
+          in: path
+          schema:
+            type: string
+          example: "attempt-lHzjYSk0O-ek5qzo"
+      requestBody:
+        content: {}
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

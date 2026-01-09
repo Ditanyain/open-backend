@@ -1,0 +1,101 @@
+paths:
+  /api/dashboard/attempts/summary:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempts Sumary
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts/history:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempts History
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: days
+          in: query
+          schema:
+            type: integer
+            enum: [7, 14, 30]
+          example: "30"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempts
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: "35363"
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: "2"
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: "1"
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: "15"
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: ["submitted", "unsubmitted"]
+          example: submitted
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts/{attempt_id}:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempt By Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: attempt_id
+          in: path
+          schema:
+            type: string
+          example: "attempt-lHzjYSk0O-ek5qzo"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/summary:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Quizzes Sumary
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

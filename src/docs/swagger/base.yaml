@@ -1,0 +1,84 @@
+openapi: 3.1.0
+
+info:
+  title: Ditanyain API
+  version: 1.0.0
+
+tags:
+  - name: Users
+  - name: Quizzes
+  - name: Attempts
+  - name: Dashboard
+  - name: Dashboard > Attempts
+  - name: Dashboard > Quizzes
+  - name: Dashboard > Authentications
+  - name: Dashboard > Authentications > Sessions
+  - name: Dashboard > Administrators
+  - name: Dashboard > Profile
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+    AIContext:
+      type: object
+      description: |
+        Konteks AI yang digunakan oleh Large Language Model (LLM)
+        untuk menghasilkan batch soal formative assessment.
+        Nilai-nilai ini merepresentasikan konfigurasi dan metadata
+        yang digunakan pada proses `generateQuizBatch`.
+      properties:
+        model:
+          type: string
+          description: Model LLM yang digunakan untuk generasi soal
+          example: gpt-4.1
+
+        temperature:
+          type: number
+          format: float
+          description: |
+            Tingkat kreativitas output LLM.
+            Semakin tinggi nilainya, variasi soal semakin besar.
+          example: 0.7
+
+        systemPrompt:
+          type: string
+          description: Prompt sistem yang dibangun oleh `buildQuizPrompt`
+          example: "You are an AI that generates high-quality formative assessment questions..."
+
+        userPrompt:
+          type: string
+          description: Prompt pengguna yang berisi materi dan instruksi generasi soal
+          example: "Generate 5 multiple-choice questions about HTTP and REST API"
+
+        batchNumber:
+          type: integer
+          description: |
+            Nomor batch generasi soal untuk menghindari duplikasi
+            antar proses generasi.
+          example: 1
+
+        existingQuestions:
+          type: array
+          description: Daftar pertanyaan yang sudah dihasilkan sebelumnya
+          items:
+            type: string
+          example:
+            - "Apa itu REST API?"
+            - "Perbedaan GET dan POST dalam HTTP?"
+
+        responseFormat:
+          type: string
+          description: Format respons LLM yang diharapkan
+          example: json_object
+
+        maxTokens:
+          type: integer
+          description: Maksimum tokens yang dihasilkan oleh LLM
+          example: 100
+
+security:
+  - bearerAuth: []

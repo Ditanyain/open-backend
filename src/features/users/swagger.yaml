@@ -1,0 +1,18 @@
+paths:
+  /api/users/{id}/preferences:
+    get:
+      tags:
+        - Users
+      summary: Getting User Preferences by User ID
+      parameters:
+        - name: id         
+          in: path         
+          required: true    
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

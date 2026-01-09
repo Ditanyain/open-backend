@@ -1,0 +1,107 @@
+paths:
+  /api/administrators:
+    post:
+      tags:
+        - Dashboard > Administrators
+      summary: Add Administrator
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Admin
+                password: Admin123
+                email: admin@email.com
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Dashboard > Administrators
+      summary: Get Administrators
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Dashboard > Profile
+      summary: Update Profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: New Admin Name
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators/{administrator_id}:
+    delete:
+      tags:
+        - Dashboard > Administrators
+      summary: Delete Administrators
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: administrator_id
+          in: path
+          schema:
+            type: string
+          example: "administrator-sLneUJ0d3001ClpV"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators/email:
+    put:
+      tags:
+        - Dashboard > Profile
+      summary: Update Email
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: SuperSecretP@ssw0rd
+                newEmail: newemail@email.com
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators/password:
+    put:
+      tags:
+        - Dashboard > Profile
+      summary: Update Password
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                oldPassword: SuperSecretP@ssw0rd
+                newPassword: NewSecretP@ssw0rd
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

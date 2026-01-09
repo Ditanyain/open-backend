@@ -1,0 +1,6 @@
+.env
+node_modules/
+dist/
+
+# ignore geolite db
+GeoLite2-City.mmdb

@@ -1,0 +1,397 @@
+openapi: 3.0.0
+info:
+  title: LearnCheck
+  version: 1.0.0
+servers:
+  - url: undefined://{{baseURL}}
+tags:
+  - name: Users
+  - name: Quizzes
+  - name: Attempts
+  - name: Dashboard
+  - name: Dashboard > Attempts
+  - name: Dashboard > Quizzes
+  - name: Dashboard > Authentications
+  - name: Dashboard > Authentications > Sessions
+  - name: Dashboard > Administrators
+  - name: Dashboard > Profile
+paths:
+  /api/users/3/preferences:
+    get:
+      tags:
+        - Users
+      summary: Getting User Preferences by User ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/quizzes:
+    get:
+      tags:
+        - Quizzes
+      summary: Getting Quiz by Tutorial ID
+      parameters:
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: '35408'
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts:
+    get:
+      tags:
+        - Attempts
+      summary: Get Attempt By User and Tutorial
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: '35363'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts/attempt-K9bZhsD9hHKHNx1t:
+    get:
+      tags:
+        - Attempts
+      summary: Get Attempt By ID
+      parameters:
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: '35793'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts/attempt-T3xAiLAQJ1GmaXS2/answers:
+    post:
+      tags:
+        - Attempts
+      summary: Post Attempt Answer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                question_id: question-uVCZLH
+                option_ids:
+                  - option-qFka6r
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attempts/attempt-crtuSJh9J66KUc1N/submit:
+    post:
+      tags:
+        - Attempts
+      summary: Submit Attempt
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts/summary:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempts Sumary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts/history:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempts History
+      parameters:
+        - name: days
+          in: query
+          schema:
+            type: integer
+          example: '30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempts
+      parameters:
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: '35363'
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: submitted
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/attempts/attempt-crtuSJh9J66KUc1N:
+    get:
+      tags:
+        - Dashboard > Attempts
+      summary: Get Attempt By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/summary:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Quizzes Sumary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/questions:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Quizzes
+      parameters:
+        - name: tutorial_id
+          in: query
+          schema:
+            type: integer
+          example: '35793'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/questions/question-Rlyo4wRQtklx2t6C:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Question By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/questions/question-9I21mH1dDBGVYKHm:
+    delete:
+      tags:
+        - Dashboard > Quizzes
+      summary: Delete Question
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard/quizzes/generations:
+    get:
+      tags:
+        - Dashboard > Quizzes
+      summary: Get Quiz Generations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/authentications/sessions:
+    get:
+      tags:
+        - Dashboard > Authentications > Sessions
+      summary: Get All Sessions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/authentications:
+    post:
+      tags:
+        - Dashboard > Authentications
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: galihbagushardiyanto@gmail.com
+                password: gbagus@05
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Dashboard > Authentications
+      summary: Update Access Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                refreshToken: '{{refreshToken}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Dashboard > Authentications
+      summary: Logout
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Dashboard > Authentications
+      summary: Get Session
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators:
+    post:
+      tags:
+        - Dashboard > Administrators
+      summary: Add Administrator
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Admin
+                password: Admin123
+                email: admin@email.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Dashboard > Administrators
+      summary: Get Administrators
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Dashboard > Profile
+      summary: Update Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Galih Bagus
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators/administrator-MkpC1ydt2UgbU-03:
+    delete:
+      tags:
+        - Dashboard > Administrators
+      summary: Delete Administrators
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators/email:
+    put:
+      tags:
+        - Dashboard > Profile
+      summary: Update Email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: SuperSecretP@ssw0rd
+                newEmail: galihbagushardiyanto@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/administrators/password:
+    put:
+      tags:
+        - Dashboard > Profile
+      summary: Update Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                oldPassword: SuperSecretP@ssw0rd
+                newPassword: gbagus@05
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
